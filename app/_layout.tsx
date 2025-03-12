@@ -36,7 +36,12 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
-        <Stack.Screen name="modal" options={{ presentation: "formSheet" }} />
+        <Stack.Screen
+          name="modal"
+          options={{
+            presentation: "formSheet",
+          }}
+        />
       </Stack>
     </ThemeProvider>
   );

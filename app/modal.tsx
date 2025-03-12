@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 
 export default () => {
   return (
-    <View className="p-4 gap-2">
+    <View style={{ padding: 16 }}>
       <ThemedText>
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
         ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
