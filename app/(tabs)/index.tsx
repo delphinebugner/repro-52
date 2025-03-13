@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet, View } from "react-native";
+import { Button, Image, Pressable, StyleSheet, View } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -62,14 +62,26 @@ export default function HomeScreen() {
 
 const TrueSheetContent = () => {
   const [count, setCount] = useState(0);
+  const [countPressable, setCountPressable] = useState(0);
   return (
-    <ThemedView className="px-5 py-12">
+    <ThemedView className="px-5 py-12 gap-2">
       <ThemedText>True Sheet Content</ThemedText>
-      <View className="h-1" />
       <Button
         title={`Count: ${count}`}
-        onPress={() => setCount((c) => c + 1)}
+        onPress={() => {
+          console.log("count is updated", count);
+          setCount((c) => c + 1);
+        }}
       />
+      <Pressable
+        className="p-2 bg-blue-400"
+        onPressIn={() => {
+          console.log("count pressable is updated", countPressable);
+          setCountPressable((c) => c + 1);
+        }}
+      >
+        <ThemedText>{`Count Pressable: ${countPressable}`}</ThemedText>
+      </Pressable>
     </ThemedView>
   );
 };
