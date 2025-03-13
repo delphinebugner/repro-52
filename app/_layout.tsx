@@ -42,6 +42,12 @@ export default function RootLayout() {
             presentation: "formSheet",
           }}
         />
+        <Stack.Screen
+          name="full-screen-modal"
+          options={{
+            presentation: "fullScreenModal",
+          }}
+        />
       </Stack>
     </ThemeProvider>
   );
