@@ -1,4 +1,15 @@
-import { Button, Image, Pressable, StyleSheet, View } from "react-native";
+import {
+  Alert,
+  Button,
+  Image,
+  Pressable,
+  StyleSheet,
+  View,
+} from "react-native";
+import {
+  GestureHandlerRootView,
+  Pressable as RNGHPressable,
+} from "react-native-gesture-handler";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -52,6 +63,15 @@ export default function HomeScreen() {
           (lodev09/react-native-true-sheet/issues/163):
         </ThemedText>
         <Button onPress={present} title="Open True Sheet" />
+        <RNGHPressable
+          onPress={() => {
+            Alert.alert("RNGHPressable", "onPress is pressed");
+          }}
+        >
+          <ThemedText
+            style={{ padding: 8, backgroundColor: "green" }}
+          >{`RNGHPressable + onPress`}</ThemedText>
+        </RNGHPressable>
         <TrueSheet ref={sheet} sizes={["auto", "large"]} cornerRadius={24}>
           <TrueSheetContent />
         </TrueSheet>
@@ -61,28 +81,35 @@ export default function HomeScreen() {
 }
 
 const TrueSheetContent = () => {
-  const [count, setCount] = useState(0);
-  const [countPressable, setCountPressable] = useState(0);
   return (
-    <ThemedView className="px-5 py-12 gap-2">
-      <ThemedText>True Sheet Content</ThemedText>
-      <Button
-        title={`Count: ${count}`}
-        onPress={() => {
-          console.log("count is updated", count);
-          setCount((c) => c + 1);
-        }}
-      />
-      <Pressable
-        className="p-2 bg-blue-400"
-        onPressIn={() => {
-          console.log("count pressable is updated", countPressable);
-          setCountPressable((c) => c + 1);
-        }}
-      >
-        <ThemedText>{`Count Pressable: ${countPressable}`}</ThemedText>
-      </Pressable>
-    </ThemedView>
+    <GestureHandlerRootView style={{ flexGrow: 1 }}>
+      <ThemedView className="px-5 py-12 gap-5">
+        <ThemedText>True Sheet Content</ThemedText>
+        <Button
+          title={`Pressable + onPress`}
+          onPress={() => {
+            Alert.alert("Pressable is pressed");
+          }}
+        />
+        <Pressable
+          className="p-2 bg-blue-400"
+          onPressIn={() => {
+            Alert.alert("onPressIn is pressed");
+          }}
+        >
+          <ThemedText>{`Pressable + onPressIn`}</ThemedText>
+        </Pressable>
+        <RNGHPressable
+          onPress={() => {
+            Alert.alert("RNGHPressable", "onPress is pressed");
+          }}
+        >
+          <ThemedText
+            style={{ padding: 8, backgroundColor: "green" }}
+          >{`RNGHPressable + onPress`}</ThemedText>
+        </RNGHPressable>
+      </ThemedView>
+    </GestureHandlerRootView>
   );
 };
 
