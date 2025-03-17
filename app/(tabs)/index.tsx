@@ -4,6 +4,7 @@ import {
   Image,
   Pressable,
   StyleSheet,
+  TextInput,
   View,
 } from "react-native";
 import {
@@ -72,7 +73,12 @@ export default function HomeScreen() {
             style={{ padding: 8, backgroundColor: "green" }}
           >{`RNGHPressable + onPress`}</ThemedText>
         </RNGHPressable>
-        <TrueSheet ref={sheet} sizes={["auto", "large"]} cornerRadius={24}>
+        <TrueSheet
+          ref={sheet}
+          sizes={["auto", "large"]}
+          cornerRadius={24}
+          edgeToEdge={false} // Necessary for TextInput - see https://github.com/lodev09/react-native-true-sheet/issues/111
+        >
           <TrueSheetContent />
         </TrueSheet>
       </ThemedView>
@@ -108,6 +114,11 @@ const TrueSheetContent = () => {
             style={{ padding: 8, backgroundColor: "green" }}
           >{`RNGHPressable + onPress`}</ThemedText>
         </RNGHPressable>
+        <ThemedText>Text Input with autofocus</ThemedText>
+        <TextInput
+          className="border border-slate-500 py-2 px-2 text-slate-500"
+          autoFocus
+        />
       </ThemedView>
     </GestureHandlerRootView>
   );
